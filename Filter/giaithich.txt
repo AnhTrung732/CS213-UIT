@@ -1,0 +1,19 @@
+Khi cho hình ảnh gốc ban đầu 2D ( phân lớp theo sáng dần - tối dần ) đi qua ma trận filter với phép tích chập cho ra kết quả:
+Cho ra kết quả với khả năng nhận diện được sự thay đổi màu sắc của ảnh theo chiều ngang tạo ra đường phân chia
+- Với filter 1 (Dựa theo kết quả file Anh1.txt), ảnh đầu ra sẽ:
++ Điểm ảnh sáng nếu ảnh gốc sáng dần ( Giả sừ độ sáng ảnh tăng dần theo hàm f(x), ta có độ sáng ảnh đầu ra y > 0 khi f(x) tăng suy ra f'(x) > 0 )(1)
++ Sáng dần nếu độ sáng của ảnh gốc tăng dần ( thì f'(x) tăng, nghĩa là f''(x) > 0 )(2)
++ Điểm ảnh tối nếu ảnh gốc tối dần (y < 0 khi f'(x) < 0)(3)
++ Tối dần nếu độ sáng của ảnh gốc tăng dần (f''(x) < 0)(4)
+- Với filter 2 (Dựa theo kết quả file Anh2.txt):
++ Điểm ảnh tối nếu ảnh gốc sáng dần ( Giả sừ độ sáng ảnh tăng dần theo hàm f(x), ta có độ sáng ảnh đầu ra y < 0 khi f(x) tăng suy ra f'(x) > 0 )(5)
++ Tối dần nếu độ sáng của ảnh gốc tăng dần ( thì f'(x) tăng, nghĩa là f''(x) > 0 )(6)
++ Điểm ảnh sáng nếu ảnh gốc tối dần (y < 0 khi f'(x) < 0)(7)
++ Sáng dần nếu độ sáng của ảnh gốc tăng dần (f''(x) < 0)(8)
+
+--> Giải thích:
+*Filter 1 có cấu trúc (sáng - tối ) đối xứng từ trên xuống dưới : ta mô hình thành cặp là (a,-a)
+	*Nếu ảnh góc là tối - sáng từ trên xuống dưới : ta mô hình độ sáng theo chiều dọc là c1,c2,c3 
+		- Điểm ảnh sáng nếu ảnh gốc sáng dần (c1 < c2) : ac2 > ac1 nên độ sáng ảnh đầu ra: ac2 - ac1 > 0 
+		- Sáng dần nếu độ sáng của ảnh gốc tăng dần (c1<c2<c3 và c3 - c2 > c2 - c1): dễ dàng ta thấy ac2-ac1 < ac3-ac2 nên độ sáng ảnh đầu ra (ac3-ac2-ac2+ac1) > 0 
+	* Chứng minh tương tự thì ta có điều (3),(4),(5),(6),(7),(8)
